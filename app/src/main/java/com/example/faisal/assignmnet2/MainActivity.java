@@ -244,10 +244,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
-                double number = Double.parseDouble(Screen.getText().toString());
-                number = number * -1 ;
-                Screen.setText(number+"");
+                if (!Screen.getText().toString().equals("0.0") && !Screen.getText().toString().equals("0") && !Screen.getText().toString().equals("")) {
+                    double number = Double.parseDouble(Screen.getText().toString());
+                    number = number * -1;
+                    Screen.setText(number + "");
+                }
 
             }
         });
@@ -255,12 +256,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-             Operations();
+                Operations();
             }
         });
-
-
-
 
 
     }
@@ -290,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
         nine = (Button) findViewById(R.id.nine);
     }
 
-    public void Operations(){
+    public void Operations() {
         num2 = Double.parseDouble(Screen.getText().toString());
         double result = 0;
         switch (operation) {
@@ -313,7 +311,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     result = num1 / num2;
                     Screen.setText(new DecimalFormat("##.##").format(result));
-                   // Screen.setText(result + "");
+                    // Screen.setText(result + "");
                 }
                 break;
         }
