@@ -4,10 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Initialze();
@@ -175,8 +175,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                MemoryNumber += Double.parseDouble(Screen.getText().toString());
-                Screen.setText("");
+                if (!Screen.getText().toString().equals("")) {
+                    MemoryNumber += Double.parseDouble(Screen.getText().toString());
+                    Screen.setText("");
+                }
             }
         });
         Back.setOnClickListener(new Button.OnClickListener() {
@@ -225,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
                 operation = "*";
 
                 num1 = Double.parseDouble(Screen.getText().toString());
+
                 Screen.setText("");
 
             }
@@ -236,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
                 operation = "-";
 
                 num1 = Double.parseDouble(Screen.getText().toString());
+
                 Screen.setText("");
 
             }
@@ -290,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void Operations() {
         num2 = Double.parseDouble(Screen.getText().toString());
+
         double result = 0;
         switch (operation) {
             case "+":
